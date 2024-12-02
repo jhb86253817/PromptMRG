@@ -13,6 +13,7 @@ from dataset import create_loader
 from modules import utils
 from transformers import BertTokenizer 
 
+
 os.environ['TOKENIZERS_PARALLELISM'] = 'True'
 
 print("commit test")
