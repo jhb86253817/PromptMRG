@@ -16,7 +16,7 @@ from transformers import BertTokenizer
 
 os.environ['TOKENIZERS_PARALLELISM'] = 'True'
 
-print("commit test")
+
 
 print('test 용도')
 
