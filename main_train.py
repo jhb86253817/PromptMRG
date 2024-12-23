@@ -16,7 +16,6 @@ from transformers import BertTokenizer
 
 os.environ['TOKENIZERS_PARALLELISM'] = 'True'
 
-print("commit test")
 
 def parse_agrs():
     parser = argparse.ArgumentParser()
