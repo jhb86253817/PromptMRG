@@ -19,7 +19,7 @@ class BaseTrainer(object):
         self.device = device
         self.is_main_process = is_main_process
 
-        self.chexbert_metrics = CheXbertMetrics('./checkpoints/stanford/chexbert/chexbert.pth', args.batch_size, device)
+        self.chexbert_metrics = CheXbertMetrics('./PromptMRG/checkpoints/stanford/chexbert/chexbert.pth', args.batch_size, device)
 
         self.criterion_cls = criterion_cls
         self.base_probs = base_probs

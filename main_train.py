@@ -13,7 +13,10 @@ from dataset import create_loader
 from modules import utils
 from transformers import BertTokenizer 
 
+
 os.environ['TOKENIZERS_PARALLELISM'] = 'True'
+
+print("commit test")
 
 def parse_agrs():
     parser = argparse.ArgumentParser()
@@ -85,6 +88,7 @@ def main():
     #### Dataset #### 
     print("Creating dataset...")
     train_dataset, val_dataset, test_dataset = create_dataset('generation_%s'%args.dataset_name, tokenizer, args)
+    # train_dataset = create_dataset('generation_%s'%args.dataset_name, tokenizer, args)
     print('number of training samples: %d'%len(train_dataset))
     print('number of validation samples: %d'%len(val_dataset))
     print('number of testing samples: %d'%len(test_dataset))

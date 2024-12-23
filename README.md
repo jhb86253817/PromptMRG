@@ -49,7 +49,7 @@ PromptMRG
 
 ## Training
 * To train a model by yourself, run `bash train_mimic_cxr.sh` to train a model on MIMIC-CXR.
-* Alternatively, you can download a trained model weight from [here](https://drive.google.com/file/d/1sIuQcglNUA6fyM5bJHrvQSoj-M-tt7wB/view?usp=sharing).
+* Alternatively, you can download a trained model weight from [here](https://drive.google.com/file/d/1s4AoLnnGOysOQkdILhhFCL59LyQtRHGa/view?usp=drive_link). Note that this model weight was trained with images from [R2Gen](https://github.com/zhjohnchan/R2Gen). If you use images processed by yourself, you may obtain degraded performance with this weight. In this case, you need to train a model by yourself.
 ## Testing
 Run `bash test_mimic_cxr.sh` to test a trained model on MIMIC-CXR and `bash test_iu_xray.sh` for IU-Xray.
 

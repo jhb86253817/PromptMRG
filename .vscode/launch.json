@@ -1,0 +1,71 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+
+
+        {
+            "name": "Debug main_test.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main_test.py",
+            "args": [
+                "--n_gpu", "1",
+                "--image_dir", "data/iu_xray/images/",
+                "--ann_path", "data/iu_xray/iu_annotation_promptmrg.json",
+                "--dataset_name", "iu_xray",
+                "--gen_max_len", "110",
+                "--gen_min_len", "60",
+                "--batch_size", "16",
+                "--save_dir", "result/promptmrg",
+                "--seed", "456789",
+                "--clip_k", "21",
+                "--beam_size", "3",
+                "--load_pretrained", "result/promptmrg/model_promptmrg_20240305 (1).pth"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "3"
+            },
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
+
+
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+    
+
+//         {
+//             "name": "Python: PromptMRG Training",
+//             "type": "python",
+//             "request": "launch",
+//             "program": "${workspaceFolder}/PromptMRG/main_train.py",
+//             "args": [
+//                 "--image_dir", "PromptMRG/data/iu_xray/images",
+//                 "--ann_path", "PromptMRG/data/iu_xray/iu_annotation_promptmrg.json",
+//                 "--dataset_name", "iu_xray",
+//                 "--gen_max_len", "150",
+//                 "--gen_min_len", "100",
+//                 "--batch_size", "16",
+//                 "--epochs", "6",
+//                 "--save_dir", "PromptMRG/results/promptmrg",
+//                 "--seed", "456789",
+//                 "--init_lr", "5e-5",
+//                 "--min_lr", "5e-6",
+//                 "--warmup_lr", "5e-7",
+//                 "--weight_decay", "0.05",
+//                 "--warmup_steps", "2000",
+//                 "--cls_weight", "4",
+//                 "--clip_k", "21",
+//                 "--beam_size", "3"
+//             ],
+//             "env": {
+//                 "CUDA_VISIBLE_DEVICES": "3"
+//             },
+//             "console": "integratedTerminal"
+//         }
+//     ]
+// }
