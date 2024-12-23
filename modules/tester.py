@@ -57,6 +57,18 @@ class Tester(BaseTester):
                 test_gts.extend(ground_truths)
                 if batch_idx % 10 == 0:
                     print('{}/{}'.format(batch_idx, len(self.test_dataloader)))
+
+
+            # gt / generated 파일 저장
+            output_path = os.path.join(self.args.save_dir, 'generated_sentences.txt')
+            with open(output_path, 'w', encoding='utf-8') as f:
+                for idx, (gt, res) in enumerate(zip(test_gts, test_res)):
+                    f.write(f"Sample {idx + 1}:\n")
+                    f.write(f"Ground Truth: {gt}\n")
+                    f.write(f"Generated: {res}\n")
+                    f.write("\n")
+            print(f"Generated sentences saved to {output_path}")
+            
             test_met = self.metric_ftns({i: [gt] for i, gt in enumerate(test_gts)},
                                         {i: [re] for i, re in enumerate(test_res)})
             test_ce = self.chexbert_metrics.compute(test_gts, test_res)
