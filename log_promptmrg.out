@@ -1,49 +1,42 @@
-commit test
-| distributed init (rank 0, word 1): env://
-[rank0]:[W1223 17:56:08.679043290 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
-Creating dataset...
-[rank0]: Traceback (most recent call last):
-[rank0]:   File "/data/nnew/PromptMRG/main_train.py", line 137, in <module>
-[rank0]:     main()
-[rank0]:   File "/data/nnew/PromptMRG/main_train.py", line 90, in main
-[rank0]:     train_dataset, val_dataset, test_dataset = create_dataset('generation_%s'%args.dataset_name, tokenizer, args)
-[rank0]:   File "/data/nnew/PromptMRG/dataset/__init__.py", line 26, in create_dataset
-[rank0]:     train_dataset = generation_train(transform_train, args.image_dir, args.ann_path, tokenizer, dataset='iu_xray', args=args)
-[rank0]:   File "/data/nnew/PromptMRG/dataset/medical_dataset.py", line 45, in __init__
-[rank0]:     self.ann = self.annotation['train']
-[rank0]: TypeError: list indices must be integers or slices, not str
-[rank0]:[W1223 17:56:08.494574022 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
-E1223 17:56:09.855000 3366757 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 3366881) of binary: /home/user/anaconda3/envs/promptmrg/bin/python
+W1226 14:11:45.803000 24684 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
 Traceback (most recent call last):
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/site-packages/torch/distributed/run.py", line 923, in <module>
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\run.py", line 923, in <module>
     main()
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\multiprocessing\errors\__init__.py", line 355, in wrapper
     return f(*args, **kwargs)
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/site-packages/torch/distributed/run.py", line 919, in main
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\run.py", line 919, in main
     run(args)
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/site-packages/torch/distributed/run.py", line 910, in run
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\run.py", line 910, in run
     elastic_launch(
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\launcher\api.py", line 138, in __call__
     return launch_agent(self._config, self._entrypoint, list(args))
-  File "/home/user/anaconda3/envs/promptmrg/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-main_train.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2024-12-23_17:56:09
-  host      : user-WS-C621E-SAGE-Series
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 3366881)
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\launcher\api.py", line 260, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\metrics\api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\agent\server\api.py", line 696, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\agent\server\api.py", line 849, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\metrics\api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\agent\server\api.py", line 668, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\metrics\api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\agent\server\api.py", line 500, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user1\miniconda3\Lib\site-packages\torch\distributed\elastic\rendezvous\static_tcp_rendezvous.py", line 67, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: use_libuv was requested but PyTorch was build without libuv support
