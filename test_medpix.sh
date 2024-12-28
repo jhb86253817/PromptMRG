@@ -1,0 +1,13 @@
+CUDA_VISIBLE_DEVICES=3, python main_test.py \
+--n_gpu 1 \
+--image_dir data/medpix/images/ \
+--ann_path data/medpix/medpix_annotation_promptmrg.json \
+--dataset_name medpix \
+--gen_max_len 110 \
+--gen_min_len 60 \
+--batch_size 16 \
+--save_dir result/promptmrg \
+--seed 456789 \
+--clip_k 21 \
+--beam_size 3 \
+--load_pretrained result/promptmrg/model_best.pth

@@ -38,7 +38,7 @@ class CheXbert(nn.Module):
                     new_key = key.replace('module.linear_heads.', 'linear_heads.')
                 new_state_dict[new_key] = value
 
-            self.load_state_dict(new_state_dict)
+            self.load_state_dict(new_state_dict, strict=False)
 
         self.eval()
 

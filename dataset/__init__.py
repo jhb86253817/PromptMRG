@@ -48,6 +48,9 @@ def create_dataset_test(dataset, tokenizer, args):
     elif dataset =='generation_mimic_cxr':
         test_dataset = generation_eval(transform_test, args.image_dir, args.ann_path, tokenizer, split='test', dataset='mimic_cxr', args=args)
         return test_dataset
+    elif dataset =='generation_medpix':
+        test_dataset = generation_eval(transform_test, args.image_dir, args.ann_path, tokenizer, split='test', dataset='medpix', args=args)
+        return test_dataset
 
 def create_sampler(datasets, shuffles, num_tasks, global_rank):
     samplers = []
