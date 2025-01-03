@@ -76,7 +76,7 @@ class generation_train(Dataset):
     
 class generation_eval(Dataset):
     def __init__(self, transform, image_root, ann_root, tokenizer, max_words=100, split='val', dataset='mimic_cxr', args=None):
-        self.annotation = json.load(open(os.path.join(ann_root), 'r'))
+        self.annotation = json.load(open(os.path.join(ann_root), 'r', encoding='utf-8'))
         if dataset == 'mimic_cxr':
             self.ann = self.annotation[split]
         else: # IU
