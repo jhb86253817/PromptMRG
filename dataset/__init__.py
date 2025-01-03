@@ -34,6 +34,12 @@ def create_dataset(dataset, tokenizer, args):
         test_dataset = generation_eval(transform_test, args.image_dir, args.ann_path, tokenizer, split='test', dataset='mimic_cxr', args=args)
         return train_dataset, val_dataset, test_dataset
     
+    elif dataset =='generation_medpix':
+        train_dataset = generation_train(transform_train, args.image_dir, args.ann_path, tokenizer, dataset='medpix', args=args)
+        val_dataset = generation_eval(transform_test, args.image_dir, args.ann_path, tokenizer, split='val', dataset='medpix', args=args)
+        test_dataset = generation_eval(transform_test, args.image_dir, args.ann_path, tokenizer, split='test', dataset='medpix', args=args)
+        return train_dataset, val_dataset, test_dataset
+    
 def create_dataset_test(dataset, tokenizer, args):
     transform_test = transforms.Compose([
         transforms.Resize(256),
