@@ -26,7 +26,7 @@ def parse_agrs():
     parser.add_argument('--image_size', type=int, default=224, help='input image size')
 
     # Data loader settings
-    parser.add_argument('--dataset_name', type=str, default='mimic_cxr', choices=['iu_xray', 'mimic_cxr'], help='the dataset to be used.')
+    parser.add_argument('--dataset_name', type=str, default='mimic_cxr', choices=['iu_xray', 'mimic_cxr','medpix'], help='the dataset to be used.')
     parser.add_argument('--threshold', type=int, default=10, help='the cut off frequency for the words.')
     parser.add_argument('--num_workers', type=int, default=2, help='the number of workers for dataloader.')
     parser.add_argument('--batch_size', type=int, default=16, help='the number of samples for a batch')
@@ -93,8 +93,13 @@ def main():
     print('number of testing samples: %d'%len(test_dataset))
 
     # distribution of diseases
-    with open('./data/mimic_cxr/base_probs.json', 'r') as f:
-        base_probs = json.load(f)
+    if args.dataset_name == 'mimic_cxr':
+        with open('./data/mimic_cxr/base_probs.json', 'r') as f:
+            base_probs = json.load(f)
+    elif args.dataset_name == 'medpix':
+        with open('./data/medpix/base_probs_medpix.json', 'r') as f:
+            base_probs = json.load(f)
+    
     # normalize
     base_probs = np.array(base_probs) / np.max(base_probs)
     # add extra probs for 4 auxiliry diseases
